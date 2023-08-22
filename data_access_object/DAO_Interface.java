@@ -2,8 +2,7 @@ package data_access_object;
 
 import java.util.ArrayList;
 
-public interface DAOInterface <T>{
-	
+public interface DAO_Interface <T> {
 	public int insert(T t);
 	
 	public int update(T t);
@@ -14,6 +13,5 @@ public interface DAOInterface <T>{
 	
 	public T selectById(T t);
 	
-	public ArrayList<T> selectByCondition(String condition);
-
+	public ArrayList<T> selectByCondition(String conString);
 }

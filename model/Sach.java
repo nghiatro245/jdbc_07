@@ -5,15 +5,14 @@ public class Sach {
 	private String tenSach;
 	private float giaBan;
 	private int namXuatBan;
-	
-	public Sach(String id) {
-		this.id = id;
+		
+	public Sach() {
 	}
 
-	public Sach(String id, String tenSach, float gianBan, int namXuatBan) {
+	public Sach(String id, String tenSach, float giaBan,int namXuatBan) {
 		this.id = id;
 		this.tenSach = tenSach;
-		this.giaBan = gianBan;
+		this.giaBan = giaBan;
 		this.namXuatBan = namXuatBan;
 	}
 	
@@ -27,6 +26,7 @@ public class Sach {
 	public String getTenSach() {
 		return tenSach;
 	}
+	
 	public void setTenSach(String tenSach) {
 		this.tenSach = tenSach;
 	}
@@ -49,6 +49,8 @@ public class Sach {
 	public String toString() {
 		return "Sach [id=" + id + ", tenSach=" + tenSach + ", giaBan=" + giaBan + ", namXuatBan=" + namXuatBan + "]";
 	}
+	
+	
 	
 	
 	
