@@ -17,7 +17,7 @@ public class SachDAO implements DAO_Interface<Sach>{
 	}
 	
 	@Override
-	public int insert(Sach t) {
+	public void insert(Sach t) {
 		int ketQua = 0;
 		try {
 			//B1: Tạo kết nối
@@ -40,11 +40,10 @@ public class SachDAO implements DAO_Interface<Sach>{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return ketQua;
 	}
 
 	@Override
-	public int update(Sach t) {
+	public void update(Sach t) {
 		int ketQua =0;
 		
 		try {
@@ -66,11 +65,10 @@ public class SachDAO implements DAO_Interface<Sach>{
 			e.printStackTrace();
 		}
 		
-		return ketQua;
-	}
+}
 
 	@Override
-	public int delete(Sach t) {
+	public void delete(Sach t) {
 		int ketQua =0;
 		
 		try {
@@ -88,9 +86,7 @@ public class SachDAO implements DAO_Interface<Sach>{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		return ketQua;
-	}
+}
 
 	@Override
 	public ArrayList<Sach> selectAll() {
@@ -148,9 +144,28 @@ public class SachDAO implements DAO_Interface<Sach>{
 	}
 
 	@Override
-	public ArrayList<Sach> selectByCondition(String conString) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Sach> selectByCondition(String condition) {
+		ArrayList<Sach> ketQua = new ArrayList<Sach>();
+		try {
+			Connection con = JDBCUtil.getConnection();
+			Statement st = con.createStatement();
+			String sql ="SELECT * FROM sach WHERE "+condition;
+			System.out.println("Ban da thuc thi: "+sql);
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next()) {
+				String id = rs.getString("id");
+				String tenSach = rs.getString("tenSach");
+				float giaBan = rs.getFloat("giaBan");
+				int namXuatBan = rs.getInt("namXuatBan");
+				
+				Sach sach = new Sach(id, tenSach, giaBan, namXuatBan);
+				ketQua.add(sach);
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ketQua;
 	}
 	
 

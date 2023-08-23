@@ -44,5 +44,11 @@ public class TestSachDAO {
 		Sach ketQua = sachDAO.selectById(find);
 		System.out.println(ketQua);
 		
+		System.out.println("---------------");
+		
+		ArrayList<Sach> listKetQua = sachDAO.selectByCondition("giaBan>60000;");
+		for (Sach s : listKetQua) {
+			System.out.println(s.toString());
+		}
 	}
 }
